@@ -81,7 +81,7 @@ Python dependencies: `env/requirements.txt`.
 ## Contact
 
 Jong Bhak — jongbhak@genomics.org (corresponding author)
-Hyoungjin Choi — ORCID 0000-0002-4391-1227
+Hyoungjin Choi — ORCID 0009-0007-0504-8870
 
 ## Funding
 
