@@ -29,7 +29,7 @@ import matplotlib.gridspec as gridspec
 from _config import FIG_W_DOUBLE
 
 from fig1a_v13_final     import make_panel_a
-from fig1b_landscape_v14 import make_panel_b as make_panel_landscape
+from fig1b_landscape_v15 import make_panel_b as make_panel_landscape
 
 OUT_DIR = ROOT / "Results/Manuscript_Figures/output/fig1"
 OUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -57,7 +57,7 @@ packaged for turnkey re-execution.
 
 | Script | Produces |
 |---|---|
-| `fig1_combined_v17.py` | Figure 1 (panels from `fig1a_v13_final.py`, `fig1b_landscape_v14.py`) |
+| `fig1_combined_v18.py` | Figure 1 (panels from `fig1a_v13_final.py`, `fig1b_landscape_v15.py`) |
 | `fig2ros_combined_v10.py` | Figure 2 (panels from `fig2ros_a_v4_chr9_inversion.py`, `fig2ros_b_v6_length.py`, `fig2ros_d_v8_benchmark.py`) |
 | `fig3_combined_v14.py` | Figure 3 (panels from `fig3a_v7_chrY_map_methyl.py`, `fig3_tspy_v10.py`, `fig3d_v18_canid_landscape.py`) |
 | `fig4_refabsent_combined_v19.py` | Figure 4 (panel d from `fig5a_callable_v10.py`; the file name predates the current figure numbering) |

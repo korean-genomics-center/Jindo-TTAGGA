@@ -163,7 +163,7 @@ def make_panel_b(fig, gs_subplot):
     leg=[Rectangle((0,0),1,1,facecolor=CMAP_H1(0.7),edgecolor=BACKBONE_EDGE,label="Hap1"),
          Rectangle((0,0),1,1,facecolor=CMAP_H2(0.7),edgecolor=BACKBONE_EDGE,label="Hap2"),
          Rectangle((0,0),1,1,facecolor=CENTROMERE_COLOR,label="Centromere"),
-         Rectangle((0,0),1,1,facecolor=TELOMERE_COLOR,label="Telomere (TTAGGA)")]
+         Rectangle((0,0),1,1,facecolor=TELOMERE_COLOR,label="Telomere (TTAGGG)n")]
     ax.legend(handles=leg,loc="upper right",frameon=False,fontsize=6,ncol=4,
               bbox_to_anchor=(1.0,1.02))
     sm1=ScalarMappable(norm=Normalize(0,GD_VMAX),cmap=CMAP_H1); sm1.set_array([])
