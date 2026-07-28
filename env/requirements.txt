@@ -1,0 +1,6 @@
+matplotlib==3.10.1
+numpy==1.26.4
+scipy==1.16.0
+pandas==2.2.3
+openpyxl==3.1.5
+cartopy==0.25.0

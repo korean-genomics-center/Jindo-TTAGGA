@@ -1,0 +1,41 @@
+# External tools used in this study.
+# Versions match those stated in the Methods section of the manuscript.
+
+# Assembly
+hifiasm                 0.25.0-r726
+Flye                    (see Methods)
+TGS-GapCloser           modified; see Methods
+tidk                    0.2.65
+SRF                     (see Methods)
+quarTeT                 (see Methods)
+MitoFinder              (see Methods)
+
+# Assembly evaluation
+BUSCO                   6.0.0      (carnivora_odb12)
+Merqury                 1.3        (k = 21)
+GCI                     (see Methods)
+minimap2                2.28
+SyRI                    (see Methods)
+
+# Annotation
+BRAKER3                 3.0.6
+BLAST+                  2.16.0
+OrthoFinder             2          (full mode)
+InterProScan            (see Methods)
+HISAT2                  2.2.2
+
+# Variant calling and population analysis
+BWA                     0.7.18
+GATK                    4.6.2.0
+samtools                1.21
+bcftools                1.21
+bedtools                2.31.1
+PLINK                   1.90b7.7
+RepeatMasker            (see Methods)
+pb-CpG-tools            2.3.2      (pileup_calling_model v1)
+
+# Phylogenetics
+MACSE                   2
+trimAl                  (see Methods)
+RAxML-NG                1.2.2
+ASTRAL-III              (see Methods)

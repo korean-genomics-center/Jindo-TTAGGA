@@ -1,0 +1,16 @@
+*.vcf.gz
+*.vcf.gz.csi
+*.bed
+*.bim
+*.fam
+*.bam
+*.bai
+*.png
+*.pdf
+*.xlsx
+*.log
+*.o[0-9]*
+*.e[0-9]*
+__pycache__/
+*.pyc
+.DS_Store
