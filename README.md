@@ -178,8 +178,8 @@ here.
 
 ## Contact
 
-Jong Bhak - jongbhak@genomics.org (corresponding author)
-Hyoungjin Choi - hjchoi349@unist.ac.kr, ORCID 0009-0007-0504-8870 (analysis code)
+- Jong Bhak - jongbhak@genomics.org (corresponding author)
+- Hyoungjin Choi - hjchoi349@unist.ac.kr, ORCID 0009-0007-0504-8870 (analysis code)
 
 ## Funding
 
