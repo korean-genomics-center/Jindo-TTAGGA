@@ -7,8 +7,8 @@ samples=hdr[5:25]
 L=wb['S-Data 7 chrY lineages']; RL=[[c.value for c in r] for r in L.iter_rows()]
 lin={str(r[0]):str(r[1]) for r in RL[2:] if r[0]}
 A=[s for s in samples if lin.get(s)=='A']
-B=[s for s in samples if lin.get(s)=='B' and s!='J73478']
-print(f"lineage A {len(A)} / lineage B(J73478 제외) {len(B)}")
+B=[s for s in samples if lin.get(s)=='B']
+print(f"lineage A {len(A)} / lineage B {len(B)}")
 idx={s:i for i,s in enumerate(samples)}
 
 rows=[]
@@ -18,12 +18,12 @@ for r in R[2:]:
     vb={g[idx[s]] for s in B if g[idx[s]]!='.'}
     if len(va)==1 and len(vb)==1 and va!=vb:
         rows.append([r[0], r[1], r[2], r[3], list(va)[0], list(vb)[0]])
-print(f"fixed differences = {len(rows)}  (기존 2,525)")
+print(f"fixed differences = {len(rows)}  (expected 2,525)")
 
 S=wb['S-Data 8 chrY fixed diffs']
 wb.remove(S)
 S=wb.create_sheet('S-Data 8 chrY fixed diffs')
-S['A1']='Supplementary Data 8. Fixed differences between the two paternal lineages, counted across the 19 individuals retained after exclusion of the data-quality outlier J73478'
+S['A1']='Supplementary Data 8. Fixed differences between the two paternal lineages, counted across all 20 individuals'
 for j,h in enumerate(['chrom','pos','ref','alt','allele_lineage_A','allele_lineage_B'],1):
     S.cell(2,j,h)
 for i,row in enumerate(rows,3):
@@ -34,7 +34,7 @@ order=[n for n in ['S-Data 1 RefAbsent genes','S-Data 2 chrY genes','S-Data 3 pe
  'S-Data 10 telomere ends'] if n in wb.sheetnames]
 wb._sheets=[wb[n] for n in order]
 wb.save(F)
-print("\n=== 최종 ===")
+print("\n=== final ===")
 w2=openpyxl.load_workbook(F)
 for n in w2.sheetnames:
-    print(f"  {n:30s} {w2[n].max_row:7d} 행")
+    print(f"  {n:30s} {w2[n].max_row:7d} rows")

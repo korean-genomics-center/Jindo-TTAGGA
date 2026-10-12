@@ -5,25 +5,34 @@ Reproduces the core result of Figure 5a and Supplementary Data 6-8 starting
 from the haploid chrY genotype matrix of the 20-male cohort.
 
 Usage:
-    python3 demo/run_demo.py
+    python3 demo/run_demo.py                    # all 20 males (main analysis)
+    python3 demo/run_demo.py --exclude J73478   # sensitivity analysis
 
 Runtime: about 15 seconds on a normal desktop computer.
 """
+import argparse
 import numpy as np
 from scipy.cluster.hierarchy import linkage, fcluster
 from scipy.spatial.distance import squareform
 
 GT = "demo/data/chrY_genotypes.tsv"
 IDS = "demo/data/sample_ids.txt"
-OUTLIER = "J73478"
 MAX_MISSING = 1
 N_BOOT = 100
 rng = np.random.default_rng(0)
+
+ap = argparse.ArgumentParser()
+ap.add_argument("--exclude", nargs="*", default=[], help="sample IDs to exclude (sensitivity analysis)")
+args = ap.parse_args()
 
 ids = np.array([l.strip() for l in open(IDS) if l.strip()])
 raw = [l.rstrip("\n").split("\t")[4:] for l in open(GT)]
 G = np.array(raw, dtype=object)
 assert G.shape[1] == len(ids), f"{G.shape[1]} columns vs {len(ids)} ids"
+if args.exclude:
+    keep_ind = ~np.isin(ids, args.exclude)
+    ids, G = ids[keep_ind], G[:, keep_ind]
+    print(f"Excluded: {' '.join(args.exclude)}")
 print(f"Loaded {G.shape[0]:,} chrY sites x {len(ids)} males")
 
 miss = (G == ".")
@@ -52,11 +61,9 @@ for g in np.unique(labels):
     members = sorted(ids[labels == g])
     print(f"  lineage {g} (n = {len(members)}): {' '.join(members)}")
 
-sel = ids != OUTLIER
-sub, sublab = D[np.ix_(sel, sel)], labels[sel]
-iu = np.triu_indices(sub.shape[0], k=1)
-same = sublab[iu[0]] == sublab[iu[1]]
-w, b = np.median(sub[iu][same]), np.median(sub[iu][~same])
+iu = np.triu_indices(n, k=1)
+same = labels[iu[0]] == labels[iu[1]]
+w, b = np.median(D[iu][same]), np.median(D[iu][~same])
 print(f"\nMedian within-lineage distance : {w:.0f}")
 print(f"Median between-lineage distance: {b:.0f}")
 print(f"Separation ratio               : {b / w:.1f}")
@@ -66,7 +73,7 @@ for s in range(G.shape[0]):
     alleles = []
     ok = True
     for g in np.unique(labels):
-        pick = (labels == g) & sel & ~miss[s]
+        pick = (labels == g) & ~miss[s]
         a = set(G[s, pick])
         if len(a) != 1:
             ok = False

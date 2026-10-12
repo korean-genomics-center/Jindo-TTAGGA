@@ -39,17 +39,28 @@ Two-lineage partition
   lineage 1 (n = 10): J12952315 J13044625 J288508 J352388 J496128 J498404 J61783 J62428 J63253 J76290
   lineage 2 (n = 10): J288326 J433555 J495439 J543672 J61435 J62957 J63542 J73201 J73478 J90474
 
-Median within-lineage distance : 749
-Median between-lineage distance: 4432
-Separation ratio               : 5.9
-Fixed differences between lineages: 3,301
+Median within-lineage distance : 832
+Median between-lineage distance: 4425
+Separation ratio               : 5.3
+Fixed differences between lineages: 2,525
 
 Partition recovered in 100/100 bootstrap replicates
 ```
 
 Every printed value appears in the manuscript: 7,375 filtered sites, the
-balanced 10:10 partition, the 5.9-fold separation ratio, 3,301 fixed
+balanced 10:10 partition, the 5.3-fold separation ratio, 2,525 fixed
 differences (Supplementary Data 8) and full bootstrap support.
+
+The sensitivity analysis that excludes J73478 (Supplementary Table 11) is
+reproduced with
+
+```
+python3 demo/run_demo.py --exclude J73478
+```
+
+which gives 7,460 sites, a 10:9 partition with identical membership, a
+separation ratio of 5.9, 3,310 fixed differences and 100/100 bootstrap
+support.
 
 ## Expected run time
 
@@ -64,7 +75,7 @@ bootstrap replicates.
 | Pairwise distance | sites with a genotype in both individuals | same |
 | Clustering | average-linkage on the distance matrix | `scipy.cluster.hierarchy` |
 | Support | 100 bootstrap replicates over sites | same, seeded for reproducibility |
-| Outlier | J73478 excluded from diversity and fixed-difference estimates | same |
+| Individuals | all 20 males retained; J73478 excluded only in the sensitivity analysis | `--exclude J73478` |
 
 The demo begins from called genotypes. Read alignment and GATK variant calling
 that produce this matrix are in `analysis/` and require the raw sequencing data

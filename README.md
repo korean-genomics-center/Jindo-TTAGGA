@@ -86,7 +86,7 @@ python3 demo/run_demo.py
 ```
 
 Expected: 11,404 chrY sites filtered to 7,375, a 10:10 partition of the cohort
-into two paternal lineages, a separation ratio of 5.9, 3,301 fixed differences
+into two paternal lineages, a separation ratio of 5.3, 2,525 fixed differences
 and 100/100 bootstrap support. About 15 seconds.
 
 ---
@@ -130,14 +130,14 @@ Each script maps to specific reported values, as tabulated below.
 |---|---|
 | `kin_job.sh` | PLINK IBD on 13,945,113 autosomal SNPs; max PI_HAT 0.246 |
 | `c1_test.py` | Within/between-lineage PI_HAT (0.024 / 0.015), permutation *P* = 0.21, Mantel *r* = -0.13, *P* = 0.04 |
-| `fixdiff.py` | 3,301 fixed differences between paternal lineages; Supplementary Data 8 |
+| `fixdiff.py` | 2,525 fixed differences between paternal lineages across all 20 males; Supplementary Data 8 |
 | `_d.sh`, `_d2.sh` | chrY read depth with and without MAPQ filtering; Supplementary Table 7 |
 | `verify_job.sh` | Cross-checks of reported counts against the call sets |
 | `snp_t2t_v2.sh` | GATK calling against Jindo1-G-TTAGGA |
 | `snp_ros_call.sh` | GATK calling against ROS_Cfam_1.0 (comparison baseline) |
 | `snp_chrY_hap2.sh` | Haploid chrY genotyping; 11,404 PASS SNPs |
-| `orthofinder_v2_full.sh` | Orthogroup assignment; 2,203 family members / 960 complete-novel |
-| `build_db.sh`, `run_tblastn_fast.sh`, `summarize_v2.py` | tblastn classification; 487 sequence-absent / 2,676 annotation-absent |
+| `orthofinder_v2_full.sh` | Orthogroup assignment (family members / complete-novel) |
+| `build_db.sh`, `run_tblastn_fast.sh`, `summarize_v2.py` | tblastn search of reference-absent models against the four dog reference genomes (refined in `revision/`) |
 | `methylation_pbcpg_both.sh` | chrY CpG methylation (pb-CpG-tools, pileup_calling_model v1) |
 | `stable3.py` | Per-chromosome QV and centromere intervals; Supplementary Table 3 |
 | `sdata11.sh`, `sdata_extra.py`, `fix2.py` | Supplementary Data tables, including the ROS and 4-Mb control distance matrices |
