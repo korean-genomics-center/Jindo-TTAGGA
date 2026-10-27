@@ -128,12 +128,12 @@ Each script maps to specific reported values, as tabulated below.
 
 | Script | Supports |
 |---|---|
-| `kin_job.sh` | PLINK IBD on 13,945,113 autosomal SNPs; max PI_HAT 0.246 |
+| `kin_job.sh` | PLINK IBD on 13,945,113 autosomal SNPs from the bcftools call set of `snp_t2t_v2.sh`; max PI_HAT 0.246 (Supplementary Data 13) |
 | `c1_test.py` | Earlier exploratory version (difference in means, pair shuffling); superseded by `revision/pihat_lineage_tests_v1.py` |
 | `fixdiff.py` | 2,525 fixed differences between paternal lineages (all called genotypes in each lineage); Supplementary Data 8 |
 | `_d.sh`, `_d2.sh` | chrY read depth with and without MAPQ filtering; Supplementary Table 7 |
 | `verify_job.sh` | Cross-checks of reported counts against the call sets |
-| `snp_t2t_v2.sh` | Early exploratory bcftools calling against TTAGGA-M; superseded by `pipeline/` (not used for reported values) |
+| `snp_t2t_v2.sh` | bcftools autosomal calling against TTAGGA-M; input to the identity-by-descent analysis (`kin_job.sh`) only; variant counts and chrY genotypes come from `pipeline/` |
 | `snp_ros_call.sh` | Early exploratory bcftools calling against ROS_Cfam_1.0; superseded by `pipeline/ros_gatk/` (not used for reported values) |
 | `snp_chrY_hap2.sh` | Early exploratory bcftools chrY calling against TTAGGA-P alone; superseded by `pipeline/jindo_chrY_gatk/` (not used for reported values) |
 | `orthofinder_v2_full.sh` | Orthogroup assignment (family members / complete-novel) |
@@ -143,7 +143,7 @@ Each script maps to specific reported values, as tabulated below.
 | `sdata11.sh`, `sdata_extra.py`, `fix2.py` | Supplementary Data tables, including the ROS and 4-Mb control distance matrices |
 | `restruct.py` | Supplementary Data workbook assembly |
 
-### `pipeline/` - final alignment and GATK calling (source of the reported population values)
+### `pipeline/` - final alignment and GATK calling (source of the reported variant counts and chrY genotypes; PI_HAT uses `analysis/snp_t2t_v2.sh` and `analysis/kin_job.sh`)
 
 Scripts were run on an SGE cluster; scheduler headers and site paths were removed, and `${JINDO_ROOT}` stands for the data directory.
 
