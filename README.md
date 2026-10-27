@@ -129,19 +129,35 @@ Each script maps to specific reported values, as tabulated below.
 | Script | Supports |
 |---|---|
 | `kin_job.sh` | PLINK IBD on 13,945,113 autosomal SNPs; max PI_HAT 0.246 |
-| `c1_test.py` | Within/between-lineage PI_HAT (0.024 / 0.015), permutation *P* = 0.21, Mantel *r* = -0.13, *P* = 0.04 |
-| `fixdiff.py` | 2,525 fixed differences between paternal lineages across all 20 males; Supplementary Data 8 |
+| `c1_test.py` | Earlier exploratory version (difference in means, pair shuffling); superseded by `revision/pihat_lineage_tests_v1.py` |
+| `fixdiff.py` | 2,525 fixed differences between paternal lineages (all called genotypes in each lineage); Supplementary Data 8 |
 | `_d.sh`, `_d2.sh` | chrY read depth with and without MAPQ filtering; Supplementary Table 7 |
 | `verify_job.sh` | Cross-checks of reported counts against the call sets |
-| `snp_t2t_v2.sh` | GATK calling against Jindo1-G-TTAGGA |
-| `snp_ros_call.sh` | GATK calling against ROS_Cfam_1.0 (comparison baseline) |
-| `snp_chrY_hap2.sh` | Haploid chrY genotyping; 11,404 PASS SNPs |
+| `snp_t2t_v2.sh` | Early exploratory bcftools calling against TTAGGA-M; superseded by `pipeline/` (not used for reported values) |
+| `snp_ros_call.sh` | Early exploratory bcftools calling against ROS_Cfam_1.0; superseded by `pipeline/ros_gatk/` (not used for reported values) |
+| `snp_chrY_hap2.sh` | Early exploratory bcftools chrY calling against TTAGGA-P alone; superseded by `pipeline/jindo_chrY_gatk/` (not used for reported values) |
 | `orthofinder_v2_full.sh` | Orthogroup assignment (family members / complete-novel) |
 | `build_db.sh`, `run_tblastn_fast.sh`, `summarize_v2.py` | tblastn search of reference-absent models against the four dog reference genomes (refined in `revision/`) |
 | `methylation_pbcpg_both.sh` | chrY CpG methylation (pb-CpG-tools, pileup_calling_model v1) |
 | `stable3.py` | Per-chromosome QV and centromere intervals; Supplementary Table 3 |
 | `sdata11.sh`, `sdata_extra.py`, `fix2.py` | Supplementary Data tables, including the ROS and 4-Mb control distance matrices |
 | `restruct.py` | Supplementary Data workbook assembly |
+
+### `pipeline/` - final alignment and GATK calling (source of the reported population values)
+
+Scripts were run on an SGE cluster; scheduler headers and site paths were removed, and `${JINDO_ROOT}` stands for the data directory.
+
+| Script | Supports |
+|---|---|
+| `jindo_realign/01_build_combined_ref.sh` | Combined male reference: TTAGGA-M chr1-38 and chrX, TTAGGA-P chrY, chrM (41 sequences) |
+| `jindo_realign/02_realign_array.sh` | BWA-MEM v0.7.18 alignment of the 20 males to the combined reference, duplicate marking |
+| `jindo_realign/03_chrY_stats.sh` | chrY read counts and depth checks |
+| `jindo_chrY_gatk/g01-g03` | GATK v4.6.2.0 HaplotypeCaller (chrY, ploidy 1), joint genotyping and hard filtering; 11,404 chrY PASS SNPs, source of the 7,375-site lineage set |
+| `jindo_wgs_gatk/wg01-wg05` | Genome-wide GATK calling (autosomes ploidy 2, chrX and chrY ploidy 1), aggregation and filtering; 12,600,556 PASS SNPs (Fig. 4d), repeat/unique split |
+| `ros_gatk/hc_gvcf.sh`, `joint_combine_perchr.sh`, `snp_aggregate.sh`, `snp_filter.sh` | Same GATK procedure against ROS_Cfam_1.0 (comparison baseline) |
+| `ros_gatk/ros_repeatmasker_array.sh` | RepeatMasker annotation of ROS_Cfam_1.0 for the repeat comparison of the ROS SNP set |
+| `callable/callable_region.sh` | Callable sequence per individual (depth >= 10, MAPQ filter); Fig. 4d |
+| `../revision/pihat_lineage_tests_v1.py` | PI_HAT within/between lineages (0.0235 / 0.0153), lineage-label permutation of the median difference, two-sided *P* = 0.21; Mantel (Pearson) *r* = -0.13, two-sided *P* = 0.04 |
 
 ### `figures/` - main figures
 
