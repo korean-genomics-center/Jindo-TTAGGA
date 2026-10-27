@@ -37,3 +37,25 @@ described in the Methods and in Supplementary Tables 8-11.
 | `fig2ros_a_v5_chr9_inversion.py`, `fig2ros_combined_v11.py` | Figure 2 (chr9 inversion read from SyRI output) |
 | `fig4_domain_counts_v1.py`, `fig4_refabsent_combined_v20.py` | Figure 4 (domain categories computed from InterProScan) |
 | `fig4_funnel_v12.py` | Supplementary Figure 3 |
+
+## Pseudoautosomal region and mixed allele calls (added after internal review)
+
+These three scripts contain no server paths; inputs are passed as arguments or through `JINDO_ROOT`.
+Requirements: samtools, minimap2, bcftools, Python 3 with openpyxl and scipy.
+
+| Script | Supports |
+|---|---|
+| `chrY_par_alignment_v1.sh` | Aligns TTAGGA-P chrY to TTAGGA-M chrX to locate the pseudoautosomal region (PAR, chrY 14.70–21.26 Mb) and checks that ROS_Cfam_1.0 carries the PAR on chrX |
+| `chrY_mixed_calls_v1.py` | Counts, per chrY site, the males with a mixed allele call (minor-allele read fraction > 0.2 at allelic depth ≥ 4) from FORMAT/AD; Supplementary Data 5 column `mixed_call_males`. On the chrY call set it reports `sites 7375; sites with no mixed call 4465` |
+| `chrY_lineage_sensitivity_v1.py` | Recomputes the Supplementary Table 11 rows for all sites, sites without mixed calls, the male-specific region and the PAR from the Supplementary Data workbook |
+
+Expected output of `chrY_lineage_sensitivity_v1.py`:
+
+```
+site set                                      sites  fixed   within  between    ratio  boot   pedigree pairs
+All sites (main analysis)                      7375   2525      832     4425      5.3   100/100  435-1098
+No mixed allele calls                          4465   2423      144     3294     23.0   100/100  59-172
+No mixed allele calls, male-specific region    3759   2419        6     3152    525.3   100/100  0-6
+Male-specific region (<14.70 Mb)               4763   2518      195     3652     18.7   100/100  14-385
+Pseudoautosomal region (>=14.70 Mb)            2612      7      706      774      1.1     0/100  421-770
+```
