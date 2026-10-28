@@ -1,12 +1,4 @@
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N syriF3
-#$ -cwd
-#$ -q all.q
-#$ -pe smp 32
-#$ -t 1-2
-#$ -o logs/syri_v3.$TASK_ID.log
-#$ -j y
 set -eu
 J=${JINDO_ROOT}
 MM=$J/Resources/Tools/minimap2/minimap2_v2.30_r1287/minimap2/minimap2

@@ -34,7 +34,7 @@ described in the Methods and in Supplementary Tables 8-11.
 
 | Script | Figure |
 |---|---|
-| `fig2ros_a_v5_chr9_inversion.py`, `fig2ros_combined_v11.py` | Figure 2 (chr9 inversion read from SyRI output) |
+| `fig2ros_a_v5_chr9_inversion.py`, `fig2ros_combined_v12.py` | Figure 2 (chr9 inversion read from SyRI output; panel c labels contig counts) |
 | `fig4_domain_counts_v1.py`, `fig4_refabsent_combined_v22.py` | Figure 4 (domain categories computed from InterProScan) |
 | `supplementary/fig4_funnel_v13.py` | Supplementary Figure 3 |
 | `supplementary/Sfig8_pedigree_v4.py` | Supplementary Figure 8 (paternal lines from pedigree certificates; ancestor names withheld) |

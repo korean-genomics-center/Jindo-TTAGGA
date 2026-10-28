@@ -1,12 +1,4 @@
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N depthU3
-#$ -cwd
-#$ -q all.q
-#$ -pe smp 2
-#$ -t 1-6
-#$ -o logs/depth3.$TASK_ID.log
-#$ -j y
 set -eu
 R=${JINDO_ROOT}/Results/Genome_Assembly/Assembly_Evaluation/GCI_Evaluation/GCI_Result
 J=(Hap1:hifi Hap1:nano Hap1:two_type Hap2:hifi Hap2:nano Hap2:two_type)

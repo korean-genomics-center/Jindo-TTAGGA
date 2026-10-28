@@ -1,12 +1,4 @@
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N bindep
-#$ -cwd
-#$ -q all.q
-#$ -pe smp 4
-#$ -t 1-3
-#$ -o logs/bindep.$TASK_ID.log
-#$ -j y
 set -eu
 source ${WORK_DIR}/miniconda3/etc/profile.d/conda.sh
 set +u; conda activate TTT; set -u

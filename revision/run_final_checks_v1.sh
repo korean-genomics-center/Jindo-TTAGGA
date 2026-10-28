@@ -1,11 +1,4 @@
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N fchk
-#$ -cwd
-#$ -q all.q
-#$ -pe smp 4
-#$ -o logs/final_checks_v1.log
-#$ -j y
 set -u
 source ${WORK_DIR}/miniconda3/etc/profile.d/conda.sh
 set +u; conda activate TTT; set -u

@@ -1,11 +1,4 @@
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N ySC2
-#$ -cwd
-#$ -q all.q
-#$ -pe smp 16
-#$ -o logs/single_copy_v2.log
-#$ -j y
 set -eu
 source ${WORK_DIR}/miniconda3/etc/profile.d/conda.sh
 set +u; conda activate TTT; set -u

@@ -136,7 +136,7 @@ Each script maps to specific reported values, as tabulated below.
 | `snp_t2t_v2.sh` | bcftools autosomal calling against TTAGGA-M; input to the identity-by-descent analysis (`kin_job.sh`) only; variant counts and chrY genotypes come from `pipeline/` |
 | `snp_ros_call.sh` | Early exploratory bcftools calling against ROS_Cfam_1.0; superseded by `pipeline/ros_gatk/` (not used for reported values) |
 | `snp_chrY_hap2.sh` | Early exploratory bcftools chrY calling against TTAGGA-P alone; superseded by `pipeline/jindo_chrY_gatk/` (not used for reported values) |
-| `orthofinder_v2_full.sh` | Orthogroup assignment (family members / complete-novel) |
+| `orthofinder_v2_full.sh` | Orthogroup assignment (family members / orthogroup-unassigned) |
 | `build_db.sh`, `run_tblastn_fast.sh`, `summarize_v2.py` | tblastn search of reference-absent models against the four dog reference genomes (refined in `revision/`) |
 | `methylation_pbcpg_both.sh` | chrY CpG methylation (pb-CpG-tools, pileup_calling_model v1) |
 | `stable3.py` | Per-chromosome QV and centromere intervals; Supplementary Table 3 |
@@ -166,7 +166,7 @@ Scripts were run on an SGE cluster; scheduler headers and site paths were remove
 | `fig1_combined_v18.py` | Figure 1 (panels from `fig1a_v13_final.py`, `fig1b_landscape_v15.py`; the output file is named `fig1_combined_v17` because the save path was not renamed) |
 | `fig2ros_combined_v12.py` | Figure 2 (panels from `fig2ros_a_v5_chr9_inversion.py`, `fig2ros_b_v6_length.py`, `fig2ros_d_v9_benchmark.py`; panel c contig and gap counts from `_count_gaps.py`, gaps = N stretches >= 100 bp) |
 | `fig3_combined_v14.py` | Figure 3 (panels from `fig3a_v7_chrY_map_methyl.py`, `fig3_tspy_v10.py`, `fig3d_v18_canid_landscape.py`) |
-| `fig4_refabsent_combined_v19.py` | Figure 4 (panel d from `fig5a_callable_v10.py`; the file name predates the current figure numbering) |
+| `fig4_refabsent_combined_v22.py` | Figure 4 (domain categories from `fig4_domain_counts_v1.py`; panel d from `fig5a_callable_v10.py`, whose file name predates the current figure numbering) |
 | `fig5_chrY_haplogroup_v5.py` | Figure 5 |
 | `measure_chrY_all.sh` | chrY depth and read-density measurements used in Figure 5 and Supplementary Table 7 |
 | `_config.py`, `_utils.py`, `_build_tracks.py`, `_count_gaps.py` | Shared modules imported by the above |
@@ -174,17 +174,19 @@ Scripts were run on an SGE cluster; scheduler headers and site paths were remove
 ### `figures/supplementary/` - supplementary figures
 
 Several file names predate the current supplementary figure numbering; the
-numbering below is that of the submitted Supplementary Information.
+numbering below is that of the submitted Supplementary Information. Where several
+versions of a script are present, the version listed here produced the submitted figure.
 
 | Script | Produces |
 |---|---|
 | `Sfig7_completeness_v2.py` | Supplementary Figure 1, assembly completeness and consensus quality |
-| `fig3c_v7_chrY_synteny_notitle.py` | Supplementary Figure 2, chrY alignment to ROS_Cfam_1.0 |
-| `fig4_funnel_v10.py` | Supplementary Figure 3, reference-absent gene funnel |
+| `fig3c_v9_chrY_synteny_notitle.py` | Supplementary Figure 2, chrY alignment to ROS_Cfam_1.0 |
+| `fig4_funnel_v13.py` | Supplementary Figure 3, reference-absent gene funnel |
 | `fig5b_chrY_population_v8.py` | Supplementary Figure 4, chrY population variation |
-| `fig5a_v2_phylogeny_notitle.py` | Supplementary Figure 5, canid phylogenetic placement |
+| `fig5a_v3_phylogeny_notitle.py` | Supplementary Figure 5, canid phylogenetic placement |
 | `mito_supp_s7_v6_notitle_22trna.py` | Supplementary Figure 6, mitochondrial genome |
 | `fig2ros_c_v6_haps.py` | Supplementary Figure 7, whole-genome Hap1-versus-Hap2 synteny |
+| `Sfig8_pedigree_v4.py` | Supplementary Figure 8, recorded paternal lines of the 20 cohort males |
 
 Assembly generation itself (HiFi/ONT assembly, polishing, gap closing) used
 published tools with the parameters given in the Methods and is not duplicated
